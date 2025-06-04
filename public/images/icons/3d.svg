@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="face1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007acc;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#005a9c;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="face2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0099ff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#007acc;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="face3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#004a7c;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#003d66;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Cubo 3D isométrico -->
+  <!-- Cara frontal -->
+  <path d="M16 24 L16 48 L32 56 L32 32 Z" fill="url(#face1)" stroke="#004a7c" stroke-width="1"/>
+
+  <!-- Cara derecha -->
+  <path d="M32 32 L32 56 L48 48 L48 24 Z" fill="url(#face2)" stroke="#004a7c" stroke-width="1"/>
+
+  <!-- Cara superior -->
+  <path d="M16 24 L32 32 L48 24 L32 16 Z" fill="url(#face3)" stroke="#004a7c" stroke-width="1"/>
+
+  <!-- Líneas de wireframe -->
+  <path d="M24 28 L24 44 M40 28 L40 44" stroke="#e0f3ff" stroke-width="1" opacity="0.7"/>
+  <path d="M20 36 L28 32 M36 32 L44 36" stroke="#e0f3ff" stroke-width="1" opacity="0.7"/>
+
+  <!-- Punto de control 3D -->
+  <circle cx="32" cy="16" r="2" fill="#ffcc00" stroke="#ff9900" stroke-width="1"/>
+  <circle cx="16" cy="24" r="2" fill="#ff6666" stroke="#cc0000" stroke-width="1"/>
+  <circle cx="48" cy="24" r="2" fill="#66ff66" stroke="#00cc00" stroke-width="1"/>
+
+  <!-- Indicador VR/3D -->
+  <circle cx="50" cy="14" r="8" fill="none" stroke="#007acc" stroke-width="2"/>
+  <rect x="46" y="10" width="8" height="5" rx="1" fill="#007acc"/>
+  <circle cx="48" cy="16" r="1.5" fill="#007acc"/>
+  <circle cx="52" cy="16" r="1.5" fill="#007acc"/>
+</svg>
