@@ -7,7 +7,7 @@
 
 body {
   font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-  line-height: 1.6;
+  line-height: 1.7;
   color: #495057;
   background: white;
   min-height: 100vh;
@@ -15,7 +15,7 @@ body {
 
 /* ===== LAYOUT ===== */
 .container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 0 auto;
   padding: 2rem 1rem;
   min-height: 100vh;
@@ -31,34 +31,32 @@ header {
   border-bottom: 1px solid #e0e0e0;
 }
 
-.logo {
-  max-width: 60px;
-  height: auto;
-  margin-bottom: 1rem;
-}
-
 h1 {
   font-size: 1.8rem;
   font-weight: 300;
   color: black;
+  margin-bottom: 0.5rem;
   letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #6c757d;
+  font-weight: 400;
 }
 
 /* ===== CONTENIDO ===== */
 main {
   flex: 1;
+  margin-bottom: 2rem;
 }
 
-.subtitle {
-  font-size: 1.1rem;
-  color: #6c757d;
-  text-align: center;
-  margin-bottom: 2.5rem;
-  font-weight: 400;
+section {
+  margin-bottom: 3rem;
 }
 
 h2 {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   font-weight: 400;
   color: black;
   margin-bottom: 1.5rem;
@@ -70,55 +68,37 @@ p {
   color: #6c757d;
   margin-bottom: 1.5rem;
   text-align: justify;
+  line-height: 1.8;
 }
 
-.policy-link {
-  color: black;
-  text-decoration: none;
-  border-bottom: 1px solid #dee2e6;
-  transition: all 0.2s ease;
+.important-notice {
+  font-weight: 500;
+  color: #343a40;
+  border-left: 3px solid black;
+  padding-left: 1rem;
+  background: #f8f9fa;
+  padding: 1rem 1rem 1rem 2rem;
+  margin: 2rem 0;
 }
 
-.policy-link:hover {
-  border-bottom-color: black;
-}
-
-/* ===== BOTONES ===== */
-.actions {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+/* ===== NAVEGACIÓN ===== */
+nav {
   margin-bottom: 2rem;
-}
-
-.btn {
-  display: inline-block;
-  padding: 0.8rem 2rem;
-  text-decoration: none;
-  font-size: 0.95rem;
-  border: 1px solid #dee2e6;
-  transition: all 0.2s ease;
-  min-width: 140px;
   text-align: center;
 }
 
-.btn-primary {
-  background: black;
-  color: white;
-  border-color: black;
-}
-
-.btn-primary:hover {
-  background: #212529;
-}
-
-.btn-secondary {
-  background: white;
+.back-link {
+  display: inline-block;
   color: black;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 400;
+  border: 1px solid #dee2e6;
+  padding: 0.8rem 1.5rem;
+  transition: all 0.2s ease;
 }
 
-.btn-secondary:hover {
+.back-link:hover {
   background: #f8f9fa;
   border-color: #ced4da;
 }
@@ -138,20 +118,22 @@ footer {
   .container { padding: 1.5rem 1rem; }
   header { margin-bottom: 2rem; padding-bottom: 1.5rem; }
   h1 { font-size: 1.6rem; }
-  .subtitle { font-size: 1rem; margin-bottom: 2rem; }
-  .actions { flex-direction: column; align-items: center; }
-  .btn { width: 100%; max-width: 250px; }
+  h2 { font-size: 1.2rem; }
+  p { font-size: 0.9rem; text-align: left; }
+  .important-notice { padding: 0.8rem 0.8rem 0.8rem 1.5rem; margin: 1.5rem 0; }
+  .back-link { font-size: 0.9rem; padding: 0.7rem 1.2rem; }
 }
 
 @media (max-width: 480px) {
   .container { padding: 1rem; }
   h1 { font-size: 1.4rem; }
-  .subtitle { font-size: 0.95rem; }
-  p { font-size: 0.9rem; }
+  h2 { font-size: 1.1rem; }
+  p { font-size: 0.85rem; }
+  .important-notice { padding: 0.7rem 0.7rem 0.7rem 1.2rem; border-left-width: 2px; }
 }
 
 /* ===== ACCESIBILIDAD ===== */
-.btn:focus, .policy-link:focus {
+.back-link:focus {
   outline: 2px solid black;
   outline-offset: 2px;
 }
