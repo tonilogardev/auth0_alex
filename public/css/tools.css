@@ -1,0 +1,291 @@
+/* ===== RESET Y BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  color: #495057;
+  background: white;
+  min-height: 100vh;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== HEADER ===== */
+header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.logo {
+  max-width: 60px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: black;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+  font-weight: 400;
+}
+
+/* ===== CONTENIDO PRINCIPAL ===== */
+main {
+  flex: 1;
+  margin-bottom: 2rem;
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 1rem 0;
+}
+
+/* ===== TARJETAS DE HERRAMIENTAS ===== */
+.tool-card {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.tool-card:hover {
+  border-color: black;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tool-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.tool-name {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+
+.tool-description {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.tool-link {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: black;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border: 1px solid black;
+}
+
+.tool-link:hover {
+  background: #212529;
+  transform: translateY(-2px);
+}
+
+/* ===== TOOLTIP ===== */
+.tooltip {
+  position: absolute;
+  background: black;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  max-width: 250px;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  pointer-events: none;
+}
+
+.tooltip.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: black;
+}
+
+/* ===== NAVEGACIÓN ===== */
+nav {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.logout-btn {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background: white;
+  color: black;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.logout-btn:hover {
+  background: #f8f9fa;
+  border-color: #ced4da;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+  margin-top: auto;
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .container { 
+    padding: 1.5rem 1rem; 
+  }
+  
+  header { 
+    margin-bottom: 2rem; 
+    padding-bottom: 1.5rem; 
+  }
+  
+  h1 { 
+    font-size: 1.6rem; 
+  }
+  
+  .subtitle { 
+    font-size: 1rem; 
+  }
+  
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .tool-card {
+    padding: 1.5rem;
+  }
+  
+  .tool-icon {
+    font-size: 2.5rem;
+  }
+  
+  .tool-name {
+    font-size: 1.2rem;
+  }
+  
+  .tool-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container { 
+    padding: 1rem; 
+  }
+  
+  h1 { 
+    font-size: 1.4rem; 
+  }
+  
+  .subtitle { 
+    font-size: 0.95rem; 
+  }
+  
+  .tool-card {
+    padding: 1.2rem;
+  }
+  
+  .tool-icon {
+    font-size: 2rem;
+  }
+  
+  .tool-name {
+    font-size: 1.1rem;
+  }
+  
+  .tool-description {
+    font-size: 0.8rem;
+  }
+  
+  .tool-link {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== ACCESIBILIDAD ===== */
+.tool-link:focus, .logout-btn:focus {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.tool-card:focus-within {
+  border-color: black;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== ANIMACIONES ===== */
+@media (prefers-reduced-motion: reduce) {
+  .tool-card,
+  .tool-link,
+  .tooltip {
+    transition: none;
+  }
+  
+  .tool-card:hover {
+    transform: none;
+  }
+  
+  .tool-link:hover {
+    transform: none;
+  }
+} 

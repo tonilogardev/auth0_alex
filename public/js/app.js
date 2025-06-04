@@ -77,6 +77,14 @@ const requireAuth = async (fn, targetUrl) => {
 window.onload = async () => {
   await configureClient();
 
+  // Manejar logout desde tools
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('logout') === 'true') {
+    console.log("> Logout from tools, executing Auth0 logout");
+    await logout();
+    return;
+  }
+
   // If unable to parse the history hash, default to the root URL
   if (!showContentFromUrl(window.location.pathname)) {
     showContentFromUrl("/");
@@ -102,6 +110,13 @@ window.onload = async () => {
   if (isAuthenticated) {
     console.log("> User is authenticated");
     window.history.replaceState({}, document.title, window.location.pathname);
+    
+    // Redirigir a herramientas si está en /app
+    if (window.location.pathname === '/app') {
+      window.location.href = '/tools';
+      return;
+    }
+    
     updateUI();
     return;
   }
@@ -118,6 +133,11 @@ window.onload = async () => {
 
       if (result.appState && result.appState.targetUrl) {
         showContentFromUrl(result.appState.targetUrl);
+      } else {
+        // Redirigir a herramientas después de autenticación exitosa
+        console.log("Logged in! Redirecting to tools...");
+        window.location.href = '/tools';
+        return;
       }
 
       console.log("Logged in!");

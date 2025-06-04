@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="Herramientas profesionales - tonilogar web">
+  <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
+  <title>Herramientas - tonilogar web</title>
+  <link rel="stylesheet" href="css/tools.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <img src="images/logo.gif" alt="Logo de tonilogar" class="logo" />
+      <h1 class="title">tonilogar web</h1>
+      <p class="subtitle">Herramientas Profesionales</p>
+    </header>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <div class="tools-grid">
+        
+        <!-- Portfolio -->
+        <div class="tool-card" data-tooltip="Explora mi portafolio profesional con proyectos de desarrollo, DevOps y visualización 3D">
+          <div class="tool-icon">📁</div>
+          <h3 class="tool-name">Portfolio</h3>
+          <p class="tool-description">Proyectos de desarrollo y DevOps</p>
+          <a href="#" class="tool-link" data-dev="http://localhost:8083" data-prod="https://portfolio.tonilogar.com">
+            Acceder
+          </a>
+        </div>
+
+        <!-- GIS Tools -->
+        <div class="tool-card" data-tooltip="Herramientas GIS para análisis geoespacial y visualización de datos satelitales">
+          <div class="tool-icon">🗺️</div>
+          <h3 class="tool-name">GIS Tools</h3>
+          <p class="tool-description">Análisis geoespacial y datos satelitales</p>
+          <a href="#" class="tool-link" data-dev="http://localhost:8084" data-prod="https://gis.tonilogar.com">
+            Acceder
+          </a>
+        </div>
+
+        <!-- 3D Virtual -->
+        <div class="tool-card" data-tooltip="Entornos virtuales 3D interactivos con tecnologías de vanguardia">
+          <div class="tool-icon">🎮</div>
+          <h3 class="tool-name">3D Virtual</h3>
+          <p class="tool-description">Entornos virtuales 3D interactivos</p>
+          <a href="#" class="tool-link" data-dev="http://localhost:8085" data-prod="https://3d.tonilogar.com">
+            Acceder
+          </a>
+        </div>
+
+        <!-- AI Tools -->
+        <div class="tool-card" data-tooltip="Herramientas de Inteligencia Artificial para análisis y procesamiento automático">
+          <div class="tool-icon">🤖</div>
+          <h3 class="tool-name">AI Tools</h3>
+          <p class="tool-description">Inteligencia Artificial y análisis</p>
+          <a href="#" class="tool-link" data-dev="http://localhost:8086" data-prod="https://ai.tonilogar.com">
+            Acceder
+          </a>
+        </div>
+
+        <!-- BIM Modeling -->
+        <div class="tool-card" data-tooltip="Modelado BIM para arquitectura e ingeniería con gestión de proyectos">
+          <div class="tool-icon">🏗️</div>
+          <h3 class="tool-name">BIM Modeling</h3>
+          <p class="tool-description">Modelado para arquitectura e ingeniería</p>
+          <a href="#" class="tool-link" data-dev="http://localhost:8087" data-prod="https://bim.tonilogar.com">
+            Acceder
+          </a>
+        </div>
+
+        <!-- Satellite Imaging -->
+        <div class="tool-card" data-tooltip="Análisis de imágenes satelitales y monitoreo ambiental en tiempo real">
+          <div class="tool-icon">🛰️</div>
+          <h3 class="tool-name">Satellite Imaging</h3>
+          <p class="tool-description">Imágenes satelitales y monitoreo ambiental</p>
+          <a href="#" class="tool-link" data-dev="http://localhost:8082" data-prod="https://satellite.tonilogar.com">
+            Acceder
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Navegación -->
+    <nav class="navigation">
+      <button id="logoutBtn" class="logout-btn">Cerrar sesión</button>
+    </nav>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>&copy; 2024 tonilogar web</p>
+    </footer>
+  </div>
+
+  <!-- Tooltip -->
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Scripts -->
+  <script src="js/tools.js"></script>
+</body>
+
+</html> 
