@@ -135,6 +135,11 @@ window.onload = async () => {
 
   if (isAuthenticated) {
     console.log("> User is authenticated");
+    // Si estamos en la página raíz, redirigimos directamente a tools.html
+    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+      window.location.replace("/tools.html");
+      return;
+    }
     window.history.replaceState({}, document.title, window.location.pathname);
     updateUI();
     return;
@@ -155,6 +160,11 @@ window.onload = async () => {
       }
 
       console.log("Logged in!");
+      // Tras procesar callback redirigimos a tools si estamos en la raíz
+      if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+        window.location.replace("/tools.html");
+        return;
+      }
     } catch (err) {
       console.log("Error parsing redirect:", err);
     }

@@ -2,7 +2,7 @@
 <html class="h-100">
   <head>
     <meta charset="UTF-8" />
-    <title>SPA SDK Sample</title>
+    <title>tonilogar web</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -29,6 +29,7 @@
       rel="stylesheet"
       href="https://cdn.auth0.com/js/auth0-samples-theme/1.0/css/auth0-theme.min.css"
     />
+    <link rel="shortcut icon" href="/images/logo.png" type="image/x-icon">
   </head>
 
   <body class="h-100">
@@ -36,7 +37,7 @@
       <div class="nav-container">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
           <div class="container">
-            <div class="navbar-brand logo"></div>
+            <!-- <div class="navbar-brand logo"></div> -->
             <button
               class="navbar-toggler"
               type="button"
@@ -50,11 +51,11 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav mr-auto">
+              <!-- <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
                   <a href="/" class="nav-link route-link">Home</a>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="navbar-nav d-none d-md-block">
                 <!-- Login button: show if NOT authenticated -->
                 <li class="nav-item auth-invisible">
@@ -163,13 +164,21 @@
 
       <div id="main-content" class="container mt-5 flex-grow-1">
         <div id="content-home" class="page text-center">
-          <button
-            id="checkAuthBtn"
-            class="btn btn-primary"
-            onclick="checkAuthStatus()"
-          >
-            Comprobar autenticación
-          </button>
+          <div class="welcome-section">
+            <div class="welcome-icon"> <img src="images/logo.gif" alt="Logo de tonilogar" class="logo" /></div>
+            <h3><strong>¡Bienvenido!</strong></h3>
+            <p>
+              Explora libremente mis herramientas, desarrolladas con buenas prácticas de DevOps,
+              arquitectura frontend y backend, junto con experiencia en entornos virtuales 3D,
+              inteligencia artificial, GIS, BIM e imagen satelital.
+            </p>
+            <p>
+              Descubre cómo este espacio conecta el mundo virtual con el real.
+            </p>
+            <div class="call-to-action">
+              <span>¡Adelante, crea tu usuario y comienza a explorar!</span>
+            </div>
+          </div>
         </div>
 
         <div class="page" id="content-profile">
@@ -196,11 +205,7 @@
       </div>
 
       <footer class="bg-light text-center p-5">
-        <div class="logo"></div>
-        <p>
-          Sample project provided by
-          <a href="https://auth0.com">Auth0</a>
-        </p>
+        <img src="images/logo.gif" alt="Logo de tonilogar" class="logo" />
       </footer>
     </div>
 

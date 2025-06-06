@@ -9,3 +9,10 @@ label {
 .navbar {
   min-height: 115px;
 }
+
+/* Estilos sección bienvenida */
+.welcome-section{max-width:600px;margin:0 auto;padding:2rem 1rem;}
+.welcome-icon{font-size:4rem;margin-bottom:1rem;}
+.call-to-action{font-size:1.1rem;font-weight:500;margin:1.5rem 0;}
+
+.logo{background:none!important;}

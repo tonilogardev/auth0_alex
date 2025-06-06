@@ -56,7 +56,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   const consent = req.cookies.cookie_consent;
   const allowed = [
-    "/consent.html", "/policy.html", "/reject.html",
+    "/consent.html", "/cookie-policy.html", "/cookie-reject.html",
     "/accept-cookies", "/auth_config.json"
   ];
   const startsWithAllowed = ["/css/", "/js/", "/images/", "/favicon", "/fonts/"];
@@ -84,8 +84,8 @@ app.post("/accept-cookies", (req, res) => {
 | Archivo | Rol |
 |---------|-----|
 | `public/consent.html` | Página de consentimiento con botón **Aceptar** y enlace **Rechazar**. |
-| `public/reject.html`  | Informa al usuario de que no podrá usar la aplicación sin cookies. |
-| `public/policy.html`  | Política detallada de cookies. |
+| `public/cookie-policy.html`  | Política detallada de cookies. |
+| `public/cookie-reject.html`  | Informa al usuario de que no podrá usar la aplicación sin cookies. |
 | `public/css/cookie-*.css` | Estilos específicos de las páginas anteriores. |
 
 ---

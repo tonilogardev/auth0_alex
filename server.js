@@ -32,8 +32,8 @@ app.use((req, res, next) => {
   // Rutas públicas que no requieren consentimiento previo
   const allowed = [
     "/consent.html",   // propia página de consentimiento
-    "/policy.html",    // política de cookies
-    "/reject.html",    // aviso de rechazo
+    "/cookie-policy.html",    // política de cookies
+    "/cookie-reject.html",    // aviso de rechazo
     "/accept-cookies", // endpoint que crea la cookie
     "/auth_config.json" // config que necesita la SPA
   ];
