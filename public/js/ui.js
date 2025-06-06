@@ -1,4 +1,4 @@
-// URL mapping, from hash to a function that responds to that URL action
+// Mapa de rutas (URL → acción) para la SPA. Cada propiedad ejecuta la función asociada.
 const router = {
   "/": () => showContent("content-home"),
   "/profile": () =>
@@ -9,10 +9,9 @@ const router = {
 //Declare helper functions
 
 /**
- * Iterates over the elements matching 'selector' and passes them
- * to 'fn'
- * @param {*} selector The CSS selector to find
- * @param {*} fn The function to execute for every element
+ * Recorre todos los elementos que coinciden con el selector y ejecuta la función callback
+ * @param {string} selector  Selector CSS para buscar elementos.
+ * @param {Function} fn      Función a ejecutar por cada elemento encontrado.
  */
 const eachElement = (selector, fn) => {
   for (let e of document.querySelectorAll(selector)) {
@@ -21,10 +20,8 @@ const eachElement = (selector, fn) => {
 };
 
 /**
- * Tries to display a content panel that is referenced
- * by the specified route URL. These are matched using the
- * router, defined above.
- * @param {*} url The route URL
+ * Dada una URL (p.ej. "/profile"), busca la acción en el router y muestra el contenido
+ * correspondiente. Devuelve true si la ruta existe.
  */
 const showContentFromUrl = (url) => {
   if (router[url]) {
@@ -36,17 +33,13 @@ const showContentFromUrl = (url) => {
 };
 
 /**
- * Returns true if `element` is a hyperlink that can be considered a link to another SPA route
- * @param {*} element The element to check
+ * Determina si un elemento DOM es un enlace de nuestra SPA (tiene clase route-link).
  */
 const isRouteLink = (element) =>
   element.tagName === "A" && element.classList.contains("route-link");
 
 /**
- * Displays a content panel specified by the given element id.
- * All the panels that participate in this flow should have the 'page' class applied,
- * so that it can be correctly hidden before the requested content is shown.
- * @param {*} id The id of the content to show
+ * Muestra el panel de contenido indicado por id y oculta el resto de paneles `.page`.
  */
 const showContent = (id) => {
   eachElement(".page", (p) => p.classList.add("hidden"));
@@ -54,7 +47,7 @@ const showContent = (id) => {
 };
 
 /**
- * Updates the user interface
+ * Sincroniza la interfaz (nombre, email, botones) con el estado de autenticación.
  */
 const updateUI = async () => {
   try {
@@ -88,6 +81,7 @@ const updateUI = async () => {
   console.log("UI updated");
 };
 
+// Actualiza la vista cuando se navega con el historial del navegador.
 window.onpopstate = (e) => {
   if (e.state && e.state.url && router[e.state.url]) {
     showContentFromUrl(e.state.url);

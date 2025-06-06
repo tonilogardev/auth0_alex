@@ -2,7 +2,8 @@
 let auth0Client = null;
 
 /**
- * Starts the authentication flow
+ * Inicia el flujo de autenticación utilizando Auth0 Universal Login.
+ * @param {string} [targetUrl] Ruta de retorno deseada tras hacer login.
  */
 const login = async (targetUrl) => {
   try {
@@ -25,7 +26,7 @@ const login = async (targetUrl) => {
 };
 
 /**
- * Executes the logout flow
+ * Cierra la sesión del usuario y redirige al origen de la aplicación.
  */
 const logout = async () => {
   try {
@@ -41,12 +42,14 @@ const logout = async () => {
 };
 
 /**
- * Retrieves the auth configuration from the server
+ * Descarga el fichero de configuración generado en el servidor con dominio y clientId.
+ * Se mantiene separado para que la SPA no incluya hard-coded las credenciales.
  */
 const fetchAuthConfig = () => fetch("/auth_config.json");
 
 /**
- * Initializes the Auth0 client
+ * Crea (o reutiliza) la instancia de Auth0 y la almacena en auth0Client.
+ * Se configura el almacenamiento en localStorage para que la sesión persista entre páginas.
  */
 const configureClient = async () => {
   const response = await fetchAuthConfig();
@@ -54,14 +57,14 @@ const configureClient = async () => {
 
   auth0Client = await auth0.createAuth0Client({
     domain: config.domain,
-    clientId: config.clientId
+    clientId: config.clientId,
+    cacheLocation: "localstorage"
   });
 };
 
 /**
- * Checks to see if the user is authenticated. If so, `fn` is executed. Otherwise, the user
- * is prompted to log in
- * @param {*} fn The function to execute if the user is logged in
+ * Comprueba si el usuario está autenticado. Si lo está, ejecuta la función fn.
+ * En caso contrario inicia el login y redirige.
  */
 const requireAuth = async (fn, targetUrl) => {
   const isAuthenticated = await auth0Client.isAuthenticated();
@@ -73,17 +76,40 @@ const requireAuth = async (fn, targetUrl) => {
   return login(targetUrl);
 };
 
+/**
+ * Comprueba el estado de autenticación y lo muestra por consola, sin redireccionar.
+ */
+const checkAuthStatus = async () => {
+  if (!auth0Client) {
+    console.warn("Auth0 client not initialized yet.");
+    return;
+  }
+  const isAuthenticated = await auth0Client.isAuthenticated();
+  console.log(
+    isAuthenticated
+      ? "El usuario está autenticado"
+      : "El usuario NO está autenticado"
+  );
+};
+
+/**
+ * Garantiza que el usuario esté autenticado en la página actual.
+ * Si no lo está, redirige a la URL indicada (por defecto "/").
+ * Devuelve true si está autenticado, false si se desencadenó la redirección.
+ */
+const ensureAuthenticatedOrRedirect = async (redirectUrl = "/") => {
+  await configureClient();
+  const isAuthenticated = await auth0Client.isAuthenticated();
+  if (!isAuthenticated) {
+    window.location.replace(redirectUrl);
+    return false;
+  }
+  return true;
+};
+
 // Will run when page finishes loading
 window.onload = async () => {
   await configureClient();
-
-  // Manejar logout desde tools
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('logout') === 'true') {
-    console.log("> Logout from tools, executing Auth0 logout");
-    await logout();
-    return;
-  }
 
   // If unable to parse the history hash, default to the root URL
   if (!showContentFromUrl(window.location.pathname)) {
@@ -110,13 +136,6 @@ window.onload = async () => {
   if (isAuthenticated) {
     console.log("> User is authenticated");
     window.history.replaceState({}, document.title, window.location.pathname);
-    
-    // Redirigir a herramientas si está en /app
-    if (window.location.pathname === '/app') {
-      window.location.href = '/tools';
-      return;
-    }
-    
     updateUI();
     return;
   }
@@ -133,11 +152,6 @@ window.onload = async () => {
 
       if (result.appState && result.appState.targetUrl) {
         showContentFromUrl(result.appState.targetUrl);
-      } else {
-        // Redirigir a herramientas después de autenticación exitosa
-        console.log("Logged in! Redirecting to tools...");
-        window.location.href = '/tools';
-        return;
       }
 
       console.log("Logged in!");

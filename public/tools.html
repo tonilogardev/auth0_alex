@@ -102,7 +102,22 @@
   <div id="tooltip" class="tooltip"></div>
 
   <!-- Scripts -->
-  <script src="js/tools.js"></script>
+  <script src="https://cdn.auth0.com/js/auth0-spa-js/2.0/auth0-spa-js.production.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Al cargar la página verificamos si hay sesión válida.
+    window.addEventListener("load", async () => {
+      // ensureAuthenticatedOrRedirect() está definida en app.js y devuelve
+      // true si el usuario está logueado; si no, redirige a "/".
+      const ok = await ensureAuthenticatedOrRedirect("/");
+      if (!ok) return; // No autenticado → ya redirigido
+
+      // Una vez verificado, enganchamos el botón de logout al método global logout()
+      const logoutBtn = document.getElementById("logoutBtn");
+      if (logoutBtn) logoutBtn.addEventListener("click", logout);
+    });
+  </script>
 </body>
 
 </html> 
