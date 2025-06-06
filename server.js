@@ -6,6 +6,7 @@
 // morgan............ Logger HTTP en modo desarrollo.
 // helmet............ Cabeceras de seguridad recomendadas.
 // cookie-parser..... Middleware para leer cookies entrantes.
+require("dotenv").config();
 const express = require("express");
 const { join } = require("path");
 const morgan = require("morgan");
@@ -72,7 +73,12 @@ app.post("/accept-cookies", (req, res) => {
 // === Rutas adicionales ===
 // Config de Auth0 para la SPA
 app.get("/auth_config.json", (req, res) => {
-  res.sendFile(join(__dirname, "auth_config.json"));
+  const domain = process.env.DOMAIN_AUTH0;
+  const clientId = process.env.CLIENT_ID_AUTH0;
+  if (!domain || !clientId) {
+    return res.status(500).json({ error: "Auth0 env vars not set" });
+  }
+  res.json({ domain, clientId });
 });
 
 // Catch-all: cualquier otra ruta devuelve index.html (SPA routing)
